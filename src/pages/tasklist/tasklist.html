@@ -1,0 +1,65 @@
+<!--
+  Generated template for the TasklistPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color = "primary">
+    <ion-title>Task List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h5 text-center>Task Summary</h5>
+
+  <!-- <ion-scroll scrollX="true" style="white-space: nowrap; height: 300px;"> -->
+      <!-- <ion-col size="2" *ngIf="bulkEdit">
+        Select
+      </ion-col> -->
+    <div>
+      <!-- <h6 text-center>Task Summary</h6> -->
+      <h6 text-center>Please click task reference to view details</h6>
+      <ion-grid>
+        <!-- <ion-row>
+          <ion-col class="bgcolor" size="9" text-center><div><B>Task Reference</B></div></ion-col>
+          <ion-col class="bgcolor" size="9" text-center><div><B>Service Type</B></div></ion-col>
+          <ion-col class="bgcolor" size="9" text-center><div><B>Distance</B></div></ion-col>
+          <ion-col class="bgcolor" size="9" text-center><div><B>Time</B></div></ion-col>
+        </ion-row> -->
+        <ion-row text-center>
+          <ion-col>
+              Date
+          </ion-col>
+          <ion-col >
+            Task Ref.
+          </ion-col>
+          <ion-col >
+              Vehicle ID
+          </ion-col>
+          <ion-col >
+              Service
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let item of taskdatas; let i = index">
+          <ion-col size="6" text-center> {{ item.date }}</ion-col>
+          <ion-col *ngIf = "item.complete=='Yes'" class = "long-text-click" text-center (click)="godetail(item)"> {{ item.object }}</ion-col>
+          <ion-col *ngIf = "item.complete=='No'" class = "short-text-click" text-center (click)="godetail(item)"> {{ item.object }}</ion-col>
+          <ion-col size="6" text-center> {{ item.vehicleid }}</ion-col>
+          <ion-col class = "long-text" text-center> {{ item.service }}</ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item  text-center color='background' no-lines>
+        <button ion-button (click)="openTask()">
+          Create New Task
+        </button>
+        <!-- <button ion-button (click)="goHome()">
+          Return Home
+        </button> -->
+      </ion-item>
+    </div>
+
+</ion-content>
